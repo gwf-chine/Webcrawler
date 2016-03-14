@@ -1,0 +1,10 @@
+G:\Grap\AT.GrapApplication\AT.Console\bin\Debug\AT.Console.exe.config
+G:\Grap\AT.GrapApplication\AT.Console\bin\Debug\AT.Console.exe
+G:\Grap\AT.GrapApplication\AT.Console\bin\Debug\AT.Console.pdb
+G:\Grap\AT.GrapApplication\AT.Console\bin\Debug\AT.Common.dll
+G:\Grap\AT.GrapApplication\AT.Console\bin\Debug\AT.Model.dll
+G:\Grap\AT.GrapApplication\AT.Console\bin\Debug\AT.Common.pdb
+G:\Grap\AT.GrapApplication\AT.Console\bin\Debug\AT.Model.pdb
+G:\Grap\AT.GrapApplication\AT.Console\obj\Debug\AT.Console.csprojResolveAssemblyReference.cache
+G:\Grap\AT.GrapApplication\AT.Console\obj\Debug\AT.Console.exe
+G:\Grap\AT.GrapApplication\AT.Console\obj\Debug\AT.Console.pdb
