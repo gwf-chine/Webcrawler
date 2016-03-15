@@ -47,17 +47,7 @@ namespace AT.Controller
         /// <returns></returns>
         private HtmlNode GetDocument(string xpath = "")
         {
-            HtmlDocument doc = new HtmlDocument();
-            var html = new HttpHelper().GetHtml(item).Html.Replace("\r", "").Replace("\n", "").Replace("\t", "");
-            doc.LoadHtml(html);
-            if (xpath != "")
-            {
-                var node = doc.DocumentNode.SelectSingleNode(xpath);
-                if (node == null)
-                    return null;
-                return HtmlNode.CreateNode(node.OuterHtml);
-            }
-            return doc.DocumentNode;
+            return item.GetDoc(xpath);
 
         }
         public void Search()

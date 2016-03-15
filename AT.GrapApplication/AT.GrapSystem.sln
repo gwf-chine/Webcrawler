@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Data.Redis", "..\Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Data.MongoDB", "..\Service.Data.MongoDB\Service.Data.MongoDB.csproj", "{BE95C229-8744-4E2E-BC93-70A08290BBA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Common", "Service.Common\Service.Common.csproj", "{B629A4E6-C1A3-4B9A-B898-B37DFC20FA23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BE95C229-8744-4E2E-BC93-70A08290BBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE95C229-8744-4E2E-BC93-70A08290BBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE95C229-8744-4E2E-BC93-70A08290BBA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B629A4E6-C1A3-4B9A-B898-B37DFC20FA23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B629A4E6-C1A3-4B9A-B898-B37DFC20FA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B629A4E6-C1A3-4B9A-B898-B37DFC20FA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B629A4E6-C1A3-4B9A-B898-B37DFC20FA23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

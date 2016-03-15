@@ -217,6 +217,7 @@ namespace AT.Model
         /// </summary>
         [StringLength(5000)]
         public string elseInfo { get; set; }
+        public string Description { get; set; }
 
 
         #endregion
