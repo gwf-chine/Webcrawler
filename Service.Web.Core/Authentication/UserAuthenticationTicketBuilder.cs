@@ -1,11 +1,11 @@
 
 using System;
 using System.Web.Security;
-using Service.Web.Core.Models;
+using Antuo.Web.Core.Models;
 
 
 
-namespace Service.Web.Core.Authentication
+namespace Antuo.Web.Core.Authentication
 {
     public class UserAuthenticationTicketBuilder
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Principal;
-using Service.Web.Core.Models;
+using Antuo.Web.Core.Models;
 
-namespace Service.Web.Core.Extensions
+namespace Antuo.Web.Core.Extensions
 {
     public static class SecurityExtensions
     {

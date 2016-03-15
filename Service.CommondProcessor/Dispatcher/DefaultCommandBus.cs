@@ -1,9 +1,9 @@
 ﻿
 using System.Collections.Generic;
 using System.Web.Mvc;
-using Service.CommandProcessor.Command;
-using Service.Core.Common;
-namespace Service.CommandProcessor.Dispatcher
+using Antuo.CommandProcessor.Command;
+using Antuo.Core.Common;
+namespace Antuo.CommandProcessor.Dispatcher
 {
     public class DefaultCommandBus : ICommandBus
     {

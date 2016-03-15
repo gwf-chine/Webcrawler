@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace Service.Core.Common
+namespace Antuo.Core.Common
 {
     public static class Md5Encrypt
     {

@@ -1,7 +1,7 @@
-﻿using Service.CommandProcessor.Command;
-using Service.Core.Common;
+﻿using Antuo.CommandProcessor.Command;
+using Antuo.Core.Common;
 using System.Collections.Generic;
-namespace Service.CommandProcessor.Dispatcher
+namespace Antuo.CommandProcessor.Dispatcher
 {
     public interface ICommandBus
     {

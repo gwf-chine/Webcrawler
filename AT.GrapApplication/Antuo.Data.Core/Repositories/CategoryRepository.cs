@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Service.Data.Infrastructure;
-using Service.Model;
+using Antuo.Data.Infrastructure;
+using Antuo.Model;
 
-namespace Service.Data.Repositories
+namespace Antuo.Data.Repositories
 {
     public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
     {

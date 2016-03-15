@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Security;
 using System;
 
-namespace Service.Web.Core.Authentication
+namespace Antuo.Web.Core.Authentication
 {
     public class DefaultFormsAuthentication : IFormsAuthentication
     {

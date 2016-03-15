@@ -1,4 +1,4 @@
-namespace Service.Model.Travels
+namespace Antuo.Model.Travels
 {
     using System;
     using System.Collections.Generic;

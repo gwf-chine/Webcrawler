@@ -1,4 +1,4 @@
-﻿namespace Service.Web.Core.Authentication
+﻿namespace Antuo.Web.Core.Authentication
 {
     public class User
     {

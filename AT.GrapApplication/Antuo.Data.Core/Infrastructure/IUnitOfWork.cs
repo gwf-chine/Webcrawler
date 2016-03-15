@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Service.Data.Infrastructure
+namespace Antuo.Data.Infrastructure
 {
     public interface IUnitOfWork
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Data.Redis
+namespace Antuo.Data.Redis
 {
     /// <summary>
     /// Redis实体基类，所有redis实体类都应该集成它

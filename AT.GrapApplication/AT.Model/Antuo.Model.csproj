@@ -54,17 +54,14 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Expense.cs" />
-    <Compile Include="HouseBase.cs" />
     <Compile Include="HuaWei.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="NewHouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ATHouse.cs" />
-    <Compile Include="Travels\HotelBase.cs" />
-    <Compile Include="Travels\HotelComments.cs" />
-    <Compile Include="Travels\HotelReserves.cs" />
+    <Compile Include="Hotel\HotelBase.cs" />
+    <Compile Include="Hotel\HotelComments.cs" />
+    <Compile Include="Hotel\HotelReserves.cs" />
     <Compile Include="Travels\HouseBase.cs" />
-    <Compile Include="Travels\HuaWei.cs" />
     <Compile Include="Travels\NewHouses.cs" />
     <Compile Include="Travels\TravelBases.cs" />
     <Compile Include="Travels\TravelComments.cs" />

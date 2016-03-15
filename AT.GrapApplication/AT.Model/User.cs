@@ -1,4 +1,4 @@
-﻿namespace Service.Model
+﻿namespace Antuo.Model
 {
     public class User
     {

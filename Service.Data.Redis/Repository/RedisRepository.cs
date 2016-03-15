@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Data.Redis.Repository
+namespace Antuo.Data.Redis.Repository
 {
     /// <summary>
     /// Redis仓储实现

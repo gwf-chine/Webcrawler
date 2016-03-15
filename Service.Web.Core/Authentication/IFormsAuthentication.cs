@@ -2,7 +2,7 @@
 using System.Web;
 using System.Web.Security;
 
-namespace Service.Web.Core.Authentication
+namespace Antuo.Web.Core.Authentication
 {
     public interface IFormsAuthentication
     {       

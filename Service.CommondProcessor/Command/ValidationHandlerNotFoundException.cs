@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Service.CommandProcessor.Command
+namespace Antuo.CommandProcessor.Command
 {
      public class ValidationHandlerNotFoundException : Exception
     {

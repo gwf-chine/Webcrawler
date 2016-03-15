@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Service.CommandProcessor;
-using Service.Core.Common;
+using Antuo.CommandProcessor;
+using Antuo.Core.Common;
 
-namespace Service.CommandProcessor.Command
+namespace Antuo.CommandProcessor.Command
 {
     public interface IValidationHandler<in TCommand> where TCommand : ICommand
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Service.Web.Core.Models
+namespace Antuo.Web.Core.Models
 {
     public class Roles
     {

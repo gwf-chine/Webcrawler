@@ -1,4 +1,4 @@
-namespace Service.Model
+namespace Antuo.Model
 {
     using System;
     using System.Data.Entity;

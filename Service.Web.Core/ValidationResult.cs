@@ -1,4 +1,4 @@
-﻿namespace Service.Web.Core.Extensions
+﻿namespace Antuo.Web.Core.Extensions
 {
     /// <summary>
     /// Describes the result of a validation of a potential change through a business service.

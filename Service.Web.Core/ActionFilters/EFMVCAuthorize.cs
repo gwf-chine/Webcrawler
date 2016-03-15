@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Service.Web.Core.ActionFilters
+namespace Antuo.Web.Core.ActionFilters
 {
     public class EFMVCAuthorize : AuthorizeAttribute
     {

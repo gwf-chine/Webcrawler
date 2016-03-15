@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Service.Model
+namespace Antuo.Model
 {
     public class Category
     {

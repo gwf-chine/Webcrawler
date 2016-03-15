@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Core
+namespace Antuo.Core
 {
     /// <summary>
     /// LogHelper的摘要说明。

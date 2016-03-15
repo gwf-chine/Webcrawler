@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
-using Service.Web.Core.Models;
-using Service.Web.Core.Extensions;
-namespace Service.Web.Core.ActionFilters
+using Antuo.Web.Core.Models;
+using Antuo.Web.Core.Extensions;
+namespace Antuo.Web.Core.ActionFilters
 {
 
     //Inject a ViewBag object to Views for getting information about an authenticated user

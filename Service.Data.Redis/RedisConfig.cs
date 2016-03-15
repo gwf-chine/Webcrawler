@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Data.Redis
+namespace Antuo.Data.Redis
 {
     /// <summary>
     /// redis主要信息的配置参数

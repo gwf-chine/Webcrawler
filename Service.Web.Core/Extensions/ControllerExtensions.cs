@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Mvc;
 
 
-namespace Service.Web.Core.Extensions
+namespace Antuo.Web.Core.Extensions
 {
     public static class ControllerExtensions
     {

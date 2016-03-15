@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Service.Core.Common
+namespace Antuo.Core.Common
 {
     /// <summary>
     /// Describes the result of a validation of a potential change through a business service.

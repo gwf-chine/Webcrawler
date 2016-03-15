@@ -1,4 +1,4 @@
-﻿namespace Service.CommandProcessor.Command
+﻿namespace Antuo.CommandProcessor.Command
 {
     public interface ICommandHandler<in TCommand> where TCommand: ICommand
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Security;
 using System.Security.Principal;
 
-namespace Service.Web.Core.Models
+namespace Antuo.Web.Core.Models
 { 
     [Serializable]
     public class EFMVCUser : IIdentity

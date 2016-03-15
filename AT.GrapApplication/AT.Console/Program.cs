@@ -1,5 +1,5 @@
-﻿using Service.Core;
-using Service.Model;
+﻿using Antuo.Core;
+using Antuo.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +13,10 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.IO;
 using System.Threading;
-using Service.Controller;
+using Antuo.Controller;
 using log4net;
 
-namespace Service.ConsoleControl
+namespace Antuo.ConsoleControl
 {
     class Program
     {

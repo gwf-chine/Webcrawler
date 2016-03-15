@@ -1,18 +1,18 @@
-namespace Service.Model.Migrations
+namespace Antuo.Model.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Service.Model.ATHouseContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Antuo.Model.ATHouseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Service.Model.ATHouseContext context)
+        protected override void Seed(Antuo.Model.ATHouseContext context)
         {
             //  This method will be called after migrating to the latest version.
 

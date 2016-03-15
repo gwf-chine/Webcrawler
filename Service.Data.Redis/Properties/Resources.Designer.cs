@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Service.Data.Redis.Properties
+namespace Antuo.Data.Redis.Properties
 {
 
 

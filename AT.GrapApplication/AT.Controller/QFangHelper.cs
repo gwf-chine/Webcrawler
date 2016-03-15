@@ -1,5 +1,5 @@
-﻿using Service.Core;
-using Service.Model;
+﻿using Antuo.Core;
+using Antuo.Model;
 using HtmlAgilityPack;
 using Newtonsoft.Json.Linq;
 using System;
@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.IO;
+using Antuo.Model.Travels;
 
-namespace Service.Controller
+namespace Antuo.Controller
 {
     #region [Q房网  www.qfang.com]
     public class QFangHelper
@@ -79,7 +80,7 @@ namespace Service.Controller
                 foreach (var node in list)
                 {
                     var model = new HouseBase();
-                    model.type = "Rent";
+                    model.Type = "Rent";
                     var tnode = HtmlNode.CreateNode(node.OuterHtml);
 
                     var title = tnode.SelectSingleNode("//div/div[1]/div[1]/h3/a");
@@ -131,9 +132,9 @@ namespace Service.Controller
                             //所属区域
                             model.houseProportion = doc.SelectSingleNode("//div[2]/ul/li[7]/div/span[2]").InnerText;
                             //建筑年代
-                            model.estateAge = doc.SelectSingleNode("//div[2]/ul/li[8]/div/span[2]").InnerText;
+                            model.EstateAge = doc.SelectSingleNode("//div[2]/ul/li[8]/div/span[2]").InnerText;
                             //小区名称
-                            model.estatePlot = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
+                            model.EstatePlot = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
                             //地址
                             model.houseAddress = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
                         }
@@ -143,31 +144,31 @@ namespace Service.Controller
                         doc = GetDocument("//*[@id=\"scrollto2\"]");
                         if (doc != null)
                         {
-                            model.estateName = doc.SelectSingleNode("//div[2]/p").InnerText;
+                            model.EstateName = doc.SelectSingleNode("//div[2]/p").InnerText;
                             //物业
-                            model.managerName = doc.SelectSingleNode("//div[2]/div[1]/div/p[2]").InnerText;
+                            model.ManagerName = doc.SelectSingleNode("//div[2]/div[1]/div/p[2]").InnerText;
                             //物业开发商
-                            model.estateDevelopers = doc.SelectSingleNode("//div[2]/div[1]/div/p[3]").InnerText;
+                            model.EstateDevelopers = doc.SelectSingleNode("//div[2]/div[1]/div/p[3]").InnerText;
                             //物业类型
-                            model.managerType = doc.SelectSingleNode("//div[2]/div[1]/div/p[4]").InnerText;
+                            model.ManagerType = doc.SelectSingleNode("//div[2]/div[1]/div/p[4]").InnerText;
                             //占地面积
-                            model.estateArea = doc.SelectSingleNode("//div[2]/div[2]/div/p[2]").InnerText;
+                            model.EstateArea = doc.SelectSingleNode("//div[2]/div[2]/div/p[2]").InnerText;
                             //绿化
-                            model.estateGreen = doc.SelectSingleNode("//div[2]/div[2]/div/p[3]").InnerText;
+                            model.EstateGreen = doc.SelectSingleNode("//div[2]/div[2]/div/p[3]").InnerText;
                             //物业费用
-                            model.managerPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[4]").InnerText;
+                            model.ManagerPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[4]").InnerText;
                             //车位
-                            model.carNum = doc.SelectSingleNode("//div[2]/div[2]/div/p[5]").InnerText;
+                            model.CarNum = doc.SelectSingleNode("//div[2]/div[2]/div/p[5]").InnerText;
                             //车位费用
-                            model.carPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[6]").InnerText;
+                            model.CarPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[6]").InnerText;
 
                             //在售房源
-                            model.sellHouseNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[1]").InnerText;
+                            model.SellHouseNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[1]").InnerText;
 
                             //租房数量
-                            model.rentingNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i") == null ? "0" : doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i").InnerText;
+                            model.Rentingnum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i") == null ? "0" : doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i").InnerText;
                             //小区当前均价与上月均价比较
-                            model.estateAvgPrice = doc.SelectSingleNode("//div[2]/div[3]/div/p[3]").InnerHtml;
+                            model.EstateAvgPrice = doc.SelectSingleNode("//div[2]/div[3]/div/p[3]").InnerHtml;
                         }
                         #endregion
 
@@ -257,45 +258,45 @@ namespace Service.Controller
                         doc = GetDocument("/html/body/div[4]/div[3]/div[2]");
                         if (doc != null)
                         {
-                            model.mobile = doc.SelectSingleNode("//h3/div[2]").InnerText;
-                            model.unitPrice = doc.SelectSingleNode("//div[1]/p").InnerText;
+                            model.Mobile = doc.SelectSingleNode("//h3/div[2]").InnerText;
+                            model.UnitPrice = doc.SelectSingleNode("//div[1]/p").InnerText;
 
-                            model.fitment = doc.SelectSingleNode("//div[2]/p[1]").InnerText;
+                        
                             //物业类型
-                            model.managerType = doc.SelectSingleNode("//div[2]/p[2]").InnerText;
-                            model.openTime = doc.SelectSingleNode("//div[2]/p[3]").InnerText;
-                            model.houseTime = doc.SelectSingleNode("//div[2]/p[4]").InnerText;
+                            model.ManagerType = doc.SelectSingleNode("//div[2]/p[2]").InnerText;
+                            model.OpenTime = doc.SelectSingleNode("//div[2]/p[3]").InnerText;
+                            model.HouseTime = doc.SelectSingleNode("//div[2]/p[4]").InnerText;
                             //开发商
-                            model.developers = doc.SelectSingleNode("//div[2]/p[5]").InnerText;
-                            model.managerFlot = doc.SelectSingleNode("//div[2]/p[6]").InnerText;
+                            model.Developers = doc.SelectSingleNode("//div[2]/p[5]").InnerText;
+                            model.EstateManagerFlot = doc.SelectSingleNode("//div[2]/p[6]").InnerText;
 
-                            model.buildType = doc.SelectSingleNode("//div[2]/p[7]").InnerText;
+                            model.EstateBuildType = doc.SelectSingleNode("//div[2]/p[7]").InnerText;
 
-                            model.ManagerName = doc.SelectSingleNode("//div[2]/p[8]").InnerText;
-                            model.estateSellAddress = doc.SelectSingleNode("//div[2]/p[9]").InnerText;
+                            model.EstateName = doc.SelectSingleNode("//div[2]/p[8]").InnerText;
+                            model.EstateSellAddress = doc.SelectSingleNode("//div[2]/p[9]").InnerText;
                         }
                         doc = GetDocument("/html/body/div[4]/div[7]/div/div[2]/div[1]");
                         if (doc != null)
                         {
 
                             //占地面积
-                            model.spaceArea = doc.SelectSingleNode("//ul/li[2]").InnerText;
+                            model.SpaceArea = doc.SelectSingleNode("//ul/li[2]").InnerText;
                             //区域  
-                            model.Area = doc.SelectSingleNode("//ul/li[3]").InnerText;
+                            model.EstateArea = doc.SelectSingleNode("//ul/li[3]").InnerText;
                             //车位
-                            model.CarNum = doc.SelectSingleNode("//ul/li[4]").InnerText;
+                            model.EstateCarNum = doc.SelectSingleNode("//ul/li[4]").InnerText;
 
 
                             //容积率
-                            model.PlotRatio = doc.SelectSingleNode("//ul/li[6]").InnerText;
+                            model.EstatePlotRatio = doc.SelectSingleNode("//ul/li[6]").InnerText;
                             model.Decoration = doc.SelectSingleNode("//ul/li[7]").InnerText;
                             //绿化
-                            model.GreenRatio = doc.SelectSingleNode("//ul/li[8]").InnerText;
+                            model.EstateGreenRatio = doc.SelectSingleNode("//ul/li[8]").InnerText;
 
 
 
                             //车位费用
-                            model.CarPrice = doc.SelectSingleNode("//ul/li[12]").InnerText;
+                            model.EstateCarPrice = doc.SelectSingleNode("//ul/li[12]").InnerText;
                             model.Description = doc.SelectSingleNode("//div").InnerHtml;
                         }
                         #endregion
@@ -342,7 +343,7 @@ namespace Service.Controller
                 foreach (var node in list)
                 {
                     var model = new HouseBase();
-                    model.type = "SecondHand";
+                    model.Type = "SecondHand";
                     var tnode = HtmlNode.CreateNode(node.OuterHtml);
                     var title = tnode.SelectSingleNode("//div/div[1]/div[1]/h3/a");
                     if (title == null)
@@ -398,9 +399,9 @@ namespace Service.Controller
                             //所属区域
                             model.houseProportion = doc.SelectSingleNode("//div[2]/ul/li[7]/div/span[2]").InnerText;
                             //建筑年代
-                            model.estateAge = doc.SelectSingleNode("//div[2]/ul/li[8]/div/span[2]").InnerText;
+                            model.EstateAge = doc.SelectSingleNode("//div[2]/ul/li[8]/div/span[2]").InnerText;
                             //小区名称
-                            model.estatePlot = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
+                            model.EstatePlot = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
                             //地址
                             model.houseAddress = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
                         }
@@ -410,31 +411,31 @@ namespace Service.Controller
                         doc = GetDocument("//*[@id=\"scrollto2\"]");
                         if (doc != null)
                         {
-                            model.estateName = doc.SelectSingleNode("//div[2]/p").InnerText;
+                            model.EstateName = doc.SelectSingleNode("//div[2]/p").InnerText;
                             //物业
-                            model.managerName = doc.SelectSingleNode("//div[2]/div[1]/div/p[2]").InnerText;
+                            model.ManagerName = doc.SelectSingleNode("//div[2]/div[1]/div/p[2]").InnerText;
                             //物业开发商
-                            model.estateDevelopers = doc.SelectSingleNode("//div[2]/div[1]/div/p[3]").InnerText;
+                            model.EstateDevelopers = doc.SelectSingleNode("//div[2]/div[1]/div/p[3]").InnerText;
                             //物业类型
-                            model.managerType = doc.SelectSingleNode("//div[2]/div[1]/div/p[4]").InnerText;
+                            model.ManagerType = doc.SelectSingleNode("//div[2]/div[1]/div/p[4]").InnerText;
                             //占地面积
-                            model.estateArea = doc.SelectSingleNode("//div[2]/div[2]/div/p[2]").InnerText;
+                            model.EstateArea = doc.SelectSingleNode("//div[2]/div[2]/div/p[2]").InnerText;
                             //绿化
-                            model.estateGreen = doc.SelectSingleNode("//div[2]/div[2]/div/p[3]").InnerText;
+                            model.EstateGreen = doc.SelectSingleNode("//div[2]/div[2]/div/p[3]").InnerText;
                             //物业费用
-                            model.managerPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[4]").InnerText;
+                            model.ManagerPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[4]").InnerText;
                             //车位
-                            model.carNum = doc.SelectSingleNode("//div[2]/div[2]/div/p[5]").InnerText;
+                            model.CarNum = doc.SelectSingleNode("//div[2]/div[2]/div/p[5]").InnerText;
                             //车位费用
-                            model.carPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[6]").InnerText;
+                            model.CarPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[6]").InnerText;
 
                             //在售房源
-                            model.sellHouseNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[1]").InnerText;
+                            model.SellHouseNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[1]").InnerText;
 
                             //租房数量
-                            model.rentingNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i") == null ? "0" : doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i").InnerText;
+                            model.Rentingnum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i") == null ? "0" : doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i").InnerText;
                             //小区当前均价与上月均价比较
-                            model.estateAvgPrice = doc.SelectSingleNode("//div[2]/div[3]/div/p[3]").InnerHtml;
+                            model.EstateAvgPrice = doc.SelectSingleNode("//div[2]/div[3]/div/p[3]").InnerHtml;
                         }
                         #endregion
 
@@ -553,7 +554,7 @@ namespace Service.Controller
                     using (var context = new ATHouseContext())
                     {
                         var model = new HouseBase();
-                        model.type = "Rent";
+                        model.Type = "Rent";
                         var tnode = HtmlNode.CreateNode(node.OuterHtml);
 
                         var title = tnode.SelectSingleNode("//div/h4/b/a");
@@ -599,13 +600,13 @@ namespace Service.Controller
                             //所在楼层
                             model.houseFloor = doc.SelectSingleNode("//div[2]/div[2]/p[1]").InnerText;
                             //建筑年代
-                            model.estateAge = doc.SelectSingleNode("//div[2]/div[2]/p[2]").InnerText;
+                            model.EstateAge = doc.SelectSingleNode("//div[2]/div[2]/p[2]").InnerText;
                             //朝向
                             model.houseOrt = doc.SelectSingleNode("//div[2]/div[3]/p[2]").InnerText;
                             //装修情况
                             model.houseFitment = doc.SelectSingleNode("//div[2]/div[4]/p").InnerText;
 
-                            model.feature = doc.SelectSingleNode("//div[2]/div[5]/em") == null ? "" : doc.SelectSingleNode("//div[2]/div[5]/em").InnerText;
+                            model.Feature = doc.SelectSingleNode("//div[2]/div[5]/em") == null ? "" : doc.SelectSingleNode("//div[2]/div[5]/em").InnerText;
 
                             //地址
                             model.houseAddress = doc.SelectSingleNode("//div[1]/h2").InnerText;
@@ -620,39 +621,39 @@ namespace Service.Controller
 
                             #region     [ 小区详细信息 ]
                             item.URL = doc.SelectSingleNode("//div[2]/div/p[4]/a").Attributes["href"].Value;
-                            model.estatePriceTrent = doc.SelectSingleNode("//div[2]/div/p").InnerHtml;
+                            model.EstatePriceTrent = doc.SelectSingleNode("//div[2]/div/p").InnerHtml;
                             doc = GetDocument();
-                            model.estateName = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/h1").InnerText;
+                            model.EstateName = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/h1").InnerText;
                             //区域
-                            model.estateLocal = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/h2").InnerText;
+                            model.EstateLocal = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/h2").InnerText;
                             //当月均价
-                            model.estateAvgPrice = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/div/span[1]/i").InnerHtml;
+                            model.EstateAvgPrice = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/div/span[1]/i").InnerHtml;
                             //月价比较
-                            model.compare = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/div/span[2]").InnerHtml;
+                            model.Compare = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/div/span[2]").InnerHtml;
                             model.houseType = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/p[1]/i[2]").InnerHtml;
-                            model.houseTotal = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/p[2]").InnerHtml;
-                            model.estateAge = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/p[1]").InnerHtml;
+                            model.HouseTotal = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/p[2]").InnerHtml;
+                            model.EstateAge = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/p[1]").InnerHtml;
 
 
-                            model.spaceArea = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/p[2]").InnerHtml;
+                            model.SpaceArea = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/p[2]").InnerHtml;
 
                             //绿化
-                            model.estateGreen = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[4]/p[1]").InnerText;
+                            model.EstateGreen = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[4]/p[1]").InnerText;
                             //容积率
-                            model.estatePlot = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]/p[1]").InnerText;
-                            model.buildArea = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]/p[2]").InnerHtml;
+                            model.EstatePlot = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]/p[1]").InnerText;
+                            model.BuildArea = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]/p[2]").InnerHtml;
 
                             //物业
-                            model.managerName = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[4]/p[2]/i[2]").InnerText;
+                            model.ManagerName = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[4]/p[2]/i[2]").InnerText;
                             //车位
-                            model.carNum = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[5]/p[1]").InnerText;
+                            model.CarNum = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[5]/p[1]").InnerText;
 
                             //物业费用
-                            model.managerPrice = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[5]/p[2]").InnerText;
-                            model.estateAdress = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[6]/p").InnerText;
+                            model.ManagerPrice = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[5]/p[2]").InnerText;
+                            model.EstateAdress = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[6]/p").InnerText;
                             //物业开发商
-                            model.estateDevelopers = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[7]/p").InnerText;
-                            model.estateDes = doc.SelectSingleNode("//*[@id=\"detailim\"]/div[2]").InnerHtml;
+                            model.EstateDevelopers = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[7]/p").InnerText;
+                            model.HouseDes = doc.SelectSingleNode("//*[@id=\"detailim\"]/div[2]").InnerHtml;
                             #endregion
 
 
@@ -664,7 +665,7 @@ namespace Service.Controller
 
 
                         model.modelID = model.web + "-" + model.modelID;
-                        model.createTime = DateTime.Now;
+                        model.CreateTime = DateTime.Now;
                         context.HouseBase.Add(model);
                         context.SaveChanges();
                         LogHelper.WriteLog("插入成功！ next...");
@@ -705,7 +706,7 @@ namespace Service.Controller
                     using (var context = new ATHouseContext())
                     {
                         var model = new HouseBase();
-                        model.type = "SecondHand";
+                        model.Type = "SecondHand";
                         var tnode = HtmlNode.CreateNode(node.OuterHtml);
 
                         var title = tnode.SelectSingleNode("//div/h4/b/a");
@@ -751,19 +752,19 @@ namespace Service.Controller
                             //所在楼层
                             model.houseFloor = doc.SelectSingleNode("//div[2]/div[2]/p[1]").InnerText;
                             //建筑年代
-                            model.estateAge = doc.SelectSingleNode("//div[2]/div[2]/p[2]").InnerText;
+                            model.EstateAge = doc.SelectSingleNode("//div[2]/div[2]/p[2]").InnerText;
                             //朝向
                             model.houseOrt = doc.SelectSingleNode("//div[2]/div[3]/p[2]").InnerText;
                             //装修情况
                             model.houseFitment = doc.SelectSingleNode("//div[2]/div[4]/p").InnerText;
 
-                            model.feature = doc.SelectSingleNode("//div[2]/div[5]/em").InnerText;
+                            model.Feature = doc.SelectSingleNode("//div[2]/div[5]/em").InnerText;
                             //建筑类型
                             model.buildType = "--";
                             //所属区域
                             model.houseProportion = "--";
                             //小区名称
-                            model.estatePlot = "--";
+                            model.EstatePlot = "--";
                             //地址
                             model.houseAddress = doc.SelectSingleNode("//div[1]/h2").InnerText;
                         }
@@ -782,37 +783,37 @@ namespace Service.Controller
                             #endregion
 
 
-                            model.estateName = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/h1").InnerText;
+                            model.EstateName = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/h1").InnerText;
                             //区域
-                            model.estateLocal = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/h2").InnerText;
+                            model.EstateLocal = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/h2").InnerText;
                             //当月均价
-                            model.estateAvgPrice = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/div/span[1]/i").InnerHtml;
+                            model.EstateAvgPrice = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/div/span[1]/i").InnerHtml;
                             //月价比较
-                            model.compare = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/div/span[2]").InnerHtml;
+                            model.Compare = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[1]/div/span[2]").InnerHtml;
                             model.houseType = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/p[1]/i[2]").InnerHtml;
-                            model.houseTotal = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/p[2]").InnerHtml;
-                            model.estateAge = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/p[1]").InnerHtml;
+                            model.HouseTotal = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/p[2]").InnerHtml;
+                            model.EstateAge = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/p[1]").InnerHtml;
 
 
-                            model.spaceArea = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/p[2]").InnerHtml;
+                            model.SpaceArea = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/p[2]").InnerHtml;
 
                             //绿化
-                            model.estateGreen = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[4]/p[1]").InnerText;
+                            model.EstateGreen = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[4]/p[1]").InnerText;
                             //容积率
-                            model.estatePlot = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]/p[1]").InnerText;
-                            model.buildArea = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]/p[2]").InnerHtml;
+                            model.EstatePlot = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]/p[1]").InnerText;
+                            model.BuildArea = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[3]/p[2]").InnerHtml;
 
                             //物业
-                            model.managerName = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[4]/p[2]/i[2]").InnerText;
+                            model.ManagerName = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[4]/p[2]/i[2]").InnerText;
                             //车位
-                            model.carNum = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[5]/p[1]").InnerText;
+                            model.CarNum = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[5]/p[1]").InnerText;
 
                             //物业费用
-                            model.managerPrice = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[5]/p[2]").InnerText;
-                            model.estateAdress = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[6]/p").InnerText;
+                            model.ManagerPrice = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[5]/p[2]").InnerText;
+                            model.EstateAdress = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[6]/p").InnerText;
                             //物业开发商
-                            model.estateDevelopers = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[7]/p").InnerText;
-                            model.estateDes = doc.SelectSingleNode("//*[@id=\"detailim\"]/div[2]").InnerHtml;
+                            model.EstateDevelopers = doc.SelectSingleNode("//*[@id=\"iwjw\"]/div/div[2]/div/div[2]/div[2]/div[2]/div[7]/p").InnerText;
+                            model.HouseDes = doc.SelectSingleNode("//*[@id=\"detailim\"]/div[2]").InnerHtml;
                         }
                         #endregion
 
@@ -820,7 +821,7 @@ namespace Service.Controller
 
 
                         model.modelID = model.web + "-" + model.modelID;
-                        model.createTime = DateTime.Now;
+                        model.CreateTime = DateTime.Now;
                         context.HouseBase.Add(model);
                         context.SaveChanges();
                         LogHelper.WriteLog("插入成功！ next...");
@@ -927,7 +928,7 @@ namespace Service.Controller
                 try
                 {
                     var model = new HouseBase();
-                    model.type = "Rent";
+                    model.Type = "Rent";
                     var tnode = HtmlNode.CreateNode(node.OuterHtml);
 
                     var title = tnode.SelectSingleNode("//dd/p[1]/a");
@@ -971,7 +972,7 @@ namespace Service.Controller
                             doc = GetDocument("//*[@id=\"body\"]/div[7]/div[2]/div[3]");
                             //租金
                             model.totalPrice = doc.SelectSingleNode("//ul/li[1]").InnerText;
-                            model.estateName = doc.SelectSingleNode("//ul/li/span[1]").InnerText;
+                            model.EstateName = doc.SelectSingleNode("//ul/li/span[1]").InnerText;
                             doc = GetDocument("//*[@id=\"zf_baseInfo_anchor\"]/ul[1]");
 
                             //房源户型
@@ -1069,31 +1070,31 @@ namespace Service.Controller
                         {
 
 
-                            model.unitPrice = doc.SelectSingleNode("//table/tbody/tr[12]/td/span[1]").InnerText;
-                            model.historyPrice = doc.SelectSingleNode("//div[3]").InnerHtml;
-                            model.projectMating = doc.SelectSingleNode("//div[5]").InnerHtml;
-                            model.floor = doc.SelectSingleNode("//div[11]").InnerHtml;
-                            model.buildFitment = doc.SelectSingleNode("//div[9]").InnerHtml;
-                            model.carport = doc.SelectSingleNode("//div[13]").InnerHtml;
-                            model.description = doc.SelectSingleNode("//div[15]").InnerHtml;
-                            model.elseInfo = doc.SelectSingleNode("//div[17]").InnerHtml;
-                            model.managerType = doc.SelectSingleNode("//table/tbody/tr[1]/td[1]").InnerText;
-                            model.feature = doc.SelectSingleNode("//table/tbody/tr[1]/td[2]").InnerText;
-                            model.buildType = doc.SelectSingleNode("//table/tbody/tr[2]/td[1]").InnerText;
-                            model.fitment = doc.SelectSingleNode("//table/tbody/tr[2]/td[2]").InnerText;
-                            model.estatePlot = doc.SelectSingleNode("//table/tbody/tr[4]/td[1]").InnerText;
-                            model.estateGreen = doc.SelectSingleNode("//table/tbody/tr[4]/td[2]").InnerText;
-                            model.loopLine = doc.SelectSingleNode("//table/tbody/tr[3]/td[1]").InnerText;
-                            model.caseFitment = doc.SelectSingleNode("//table/tbody/tr[3]/td[2]").InnerText;
-                            model.openTime = doc.SelectSingleNode("//table/tbody/tr[5]/td[1]").InnerText;
-                            model.houseTime = doc.SelectSingleNode("//table/tbody/tr[5]/td[2]").InnerText;
-                            model.managerFlot = doc.SelectSingleNode("//table/tbody/tr[6]/td[1]").InnerText;
-                            model.ManagerName = doc.SelectSingleNode("//table/tbody/tr[6]/td[2]").InnerText;
-                            model.developers = doc.SelectSingleNode("//table/tbody/tr[7]/td").InnerText;
-                            model.estateLicence = doc.SelectSingleNode("//table/tbody/tr[8]/td").InnerText;
-                            model.estateSellAddress = doc.SelectSingleNode("//table/tbody/tr[9]/td").InnerText;
-                            model.estateManagerAddress = doc.SelectSingleNode("//table/tbody/tr[10]/td").InnerText;
-                            model.estateTraffic = doc.SelectSingleNode("//div[7]").InnerHtml;
+                            model.UnitPrice = doc.SelectSingleNode("//table/tbody/tr[12]/td/span[1]").InnerText;
+                            model.HistoryPrice = doc.SelectSingleNode("//div[3]").InnerHtml;
+                            model.ProjectMating = doc.SelectSingleNode("//div[5]").InnerHtml;
+                            model.EstateFloor = doc.SelectSingleNode("//div[11]").InnerHtml;
+                            model.EstateBuildFitment = doc.SelectSingleNode("//div[9]").InnerHtml;
+                            model.EstateCarport = doc.SelectSingleNode("//div[13]").InnerHtml;
+                            model.Description = doc.SelectSingleNode("//div[15]").InnerHtml;
+                            model.ElseInfo = doc.SelectSingleNode("//div[17]").InnerHtml;
+                            model.ManagerType = doc.SelectSingleNode("//table/tbody/tr[1]/td[1]").InnerText;
+                            model.Feature = doc.SelectSingleNode("//table/tbody/tr[1]/td[2]").InnerText;
+                            model.EstateBuildType = doc.SelectSingleNode("//table/tbody/tr[2]/td[1]").InnerText;
+                            model.CaseFitment = doc.SelectSingleNode("//table/tbody/tr[2]/td[2]").InnerText;
+                            model.EstatePlot = doc.SelectSingleNode("//table/tbody/tr[4]/td[1]").InnerText;
+                            model.EstateGreen = doc.SelectSingleNode("//table/tbody/tr[4]/td[2]").InnerText;
+                            model.LoopLine = doc.SelectSingleNode("//table/tbody/tr[3]/td[1]").InnerText;
+                            model.CaseFitment = doc.SelectSingleNode("//table/tbody/tr[3]/td[2]").InnerText;
+                            model.OpenTime = doc.SelectSingleNode("//table/tbody/tr[5]/td[1]").InnerText;
+                            model.HouseTime = doc.SelectSingleNode("//table/tbody/tr[5]/td[2]").InnerText;
+                            model.EstateManagerFlot = doc.SelectSingleNode("//table/tbody/tr[6]/td[1]").InnerText;
+                            model.EstateManager = doc.SelectSingleNode("//table/tbody/tr[6]/td[2]").InnerText;
+                            model.Developers = doc.SelectSingleNode("//table/tbody/tr[7]/td").InnerText;
+                            model.EstateLicence = doc.SelectSingleNode("//table/tbody/tr[8]/td").InnerText;
+                            model.EstateSellAddress = doc.SelectSingleNode("//table/tbody/tr[9]/td").InnerText;
+                            model.EstateManagerAddress = doc.SelectSingleNode("//table/tbody/tr[10]/td").InnerText;
+                            model.EstateTraffic = doc.SelectSingleNode("//div[7]").InnerHtml;
                         }
 
                         #endregion
@@ -1142,7 +1143,7 @@ namespace Service.Controller
                 try
                 {
                     var model = new HouseBase();
-                    model.type = "SecondHand";
+                    model.Type = "SecondHand";
                     var tnode = HtmlNode.CreateNode(node.OuterHtml);
                     var title = tnode.SelectSingleNode("//dd/p[1]/a");
                     if (title == null)
@@ -1197,9 +1198,9 @@ namespace Service.Controller
                             //所属区域
                             model.houseProportion = doc.SelectSingleNode("//div[2]/ul/li[7]/div/span[2]").InnerText;
                             //建筑年代
-                            model.estateAge = doc.SelectSingleNode("//div[2]/ul/li[8]/div/span[2]").InnerText;
+                            model.EstateAge = doc.SelectSingleNode("//div[2]/ul/li[8]/div/span[2]").InnerText;
                             //小区名称
-                            model.estatePlot = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
+                            model.EstatePlot = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
                             //地址
                             model.houseAddress = doc.SelectSingleNode("//div[2]/ul/li[4]/div/span[2]").InnerText;
                         }
@@ -1209,31 +1210,31 @@ namespace Service.Controller
                         doc = GetDocument("//*[@id=\"scrollto2\"]");
                         if (doc != null)
                         {
-                            model.estateName = doc.SelectSingleNode("//div[2]/p").InnerText;
+                            model.EstateName = doc.SelectSingleNode("//div[2]/p").InnerText;
                             //物业
-                            model.managerName = doc.SelectSingleNode("//div[2]/div[1]/div/p[2]").InnerText;
+                            model.ManagerName = doc.SelectSingleNode("//div[2]/div[1]/div/p[2]").InnerText;
                             //物业开发商
-                            model.estateDevelopers = doc.SelectSingleNode("//div[2]/div[1]/div/p[3]").InnerText;
+                            model.EstateDevelopers = doc.SelectSingleNode("//div[2]/div[1]/div/p[3]").InnerText;
                             //物业类型
-                            model.managerType = doc.SelectSingleNode("//div[2]/div[1]/div/p[4]").InnerText;
+                            model.ManagerType = doc.SelectSingleNode("//div[2]/div[1]/div/p[4]").InnerText;
                             //占地面积
-                            model.estateArea = doc.SelectSingleNode("//div[2]/div[2]/div/p[2]").InnerText;
+                            model.EstateArea = doc.SelectSingleNode("//div[2]/div[2]/div/p[2]").InnerText;
                             //绿化
-                            model.estateGreen = doc.SelectSingleNode("//div[2]/div[2]/div/p[3]").InnerText;
+                            model.EstateGreen = doc.SelectSingleNode("//div[2]/div[2]/div/p[3]").InnerText;
                             //物业费用
-                            model.managerPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[4]").InnerText;
+                            model.ManagerPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[4]").InnerText;
                             //车位
-                            model.carNum = doc.SelectSingleNode("//div[2]/div[2]/div/p[5]").InnerText;
+                            model.CarNum = doc.SelectSingleNode("//div[2]/div[2]/div/p[5]").InnerText;
                             //车位费用
-                            model.carPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[6]").InnerText;
+                            model.CarPrice = doc.SelectSingleNode("//div[2]/div[2]/div/p[6]").InnerText;
 
                             //在售房源
-                            model.sellHouseNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[1]").InnerText;
+                            model.SellHouseNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[1]").InnerText;
 
                             //租房数量
-                            model.rentingNum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i") == null ? "0" : doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i").InnerText;
+                            model.Rentingnum = doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i") == null ? "0" : doc.SelectSingleNode("//div[2]/div[3]/div/p[2]/a[2]/i").InnerText;
                             //小区当前均价与上月均价比较
-                            model.estateAvgPrice = doc.SelectSingleNode("//div[2]/div[3]/div/p[3]").InnerHtml;
+                            model.EstateAvgPrice = doc.SelectSingleNode("//div[2]/div[3]/div/p[3]").InnerHtml;
                         }
                         #endregion
 

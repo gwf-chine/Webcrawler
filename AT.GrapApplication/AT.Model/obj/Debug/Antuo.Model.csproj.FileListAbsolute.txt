@@ -4,7 +4,6 @@ C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\EntityFramework.xml
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-C:\Working\webcrawler\AT.GrapApplication\AT.Model\obj\Debug\Antuo.Model.csprojResolveAssemblyReference.cache
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\Antuo.Model.dll.config
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\Antuo.Model.dll
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\Antuo.Model.pdb

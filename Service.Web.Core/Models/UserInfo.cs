@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml.Serialization;
 using System.IO;
 
-namespace Service.Web.Core.Models
+namespace Antuo.Web.Core.Models
 {
      public class UserInfo
     {

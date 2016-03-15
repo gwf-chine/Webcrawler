@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO.Compression;
 
-namespace Service.Web.Core.ActionFilters
+namespace Antuo.Web.Core.ActionFilters
 {
     public class CompressResponseAttribute : ActionFilterAttribute
     {
