@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AT.Model
+namespace Service.Model
 {
     /// <summary>
     /// 新楼盘
     /// </summary>
     [Table("NewHouses")]
-   public class NewHouse
+   public class NewHouses
     {
         /// <summary>
         /// 装修案例

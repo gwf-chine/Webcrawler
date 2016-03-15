@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AT.Model
+namespace Service.Model
 {
     [Serializable]
     [Table("HuaWei")]

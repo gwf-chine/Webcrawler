@@ -65,9 +65,9 @@
       <Project>{aef812c4-3c18-411f-8bc8-31d467478cc5}</Project>
       <Name>AT.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AT.Model\AT.Model.csproj">
+    <ProjectReference Include="..\AT.Model\Antuo.Model.csproj">
       <Project>{531df9d4-58e3-46cf-9073-02e2eb456d37}</Project>
-      <Name>AT.Model</Name>
+      <Name>Antuo.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

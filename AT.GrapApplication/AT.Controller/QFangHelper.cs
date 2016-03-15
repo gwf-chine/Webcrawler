@@ -1,5 +1,5 @@
-﻿using AT.Common;
-using AT.Model;
+﻿using Service.Core;
+using Service.Model;
 using HtmlAgilityPack;
 using Newtonsoft.Json.Linq;
 using System;
@@ -13,7 +13,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.IO;
 
-namespace AT.Controller
+namespace Service.Controller
 {
     #region [Q房网  www.qfang.com]
     public class QFangHelper
@@ -95,7 +95,7 @@ namespace AT.Controller
                         continue;
                     model.modelID = idNode.Attributes["href"].Value;
                     var path = domain + model.modelID;
-                    using (var context = new ATHouse())
+                    using (var context = new ATHouseContext())
                     {
 
                         model.ID = Guid.NewGuid();
@@ -227,7 +227,7 @@ namespace AT.Controller
             {
                 foreach (var node in list)
                 {
-                    var model = new NewHouse();
+                    var model = new NewHouses();
 
 
                     var tnode = HtmlNode.CreateNode(node.OuterHtml);
@@ -239,11 +239,11 @@ namespace AT.Controller
                     model.web = "Qfang";
                     model.modelID = title.Attributes["href"].Value;
 
-                    using (var context = new ATHouse())
+                    using (var context = new ATHouseContext())
                     {
 
                         model.ID = Guid.NewGuid();
-                        var any = context.NewHouse.Any(p => p.modelID == model.web + "-" + model.modelID);
+                        var any = context.NewHouses.Any(p => p.modelID == model.web + "-" + model.modelID);
                         if (any) { LogHelper.WriteLog("已存在next..."); continue; }
                         var path = domain + model.modelID;
                         item.URL = path;
@@ -304,7 +304,7 @@ namespace AT.Controller
 
 
                         model.modelID = model.web + "-" + model.modelID;
-                        context.NewHouse.Add(model);
+                        context.NewHouses.Add(model);
                         context.SaveChanges();
                         LogHelper.WriteLog("插入成功！ next...");
                         LogHelper.WriteLog("结束");
@@ -355,7 +355,7 @@ namespace AT.Controller
                     if (idNode == null)
                         continue;
                     model.modelID = idNode.Attributes["href"].Value;
-                    using (var context = new ATHouse())
+                    using (var context = new ATHouseContext())
                     {
 
                         model.ID = Guid.NewGuid();
@@ -550,7 +550,7 @@ namespace AT.Controller
             {
                 try
                 {
-                    using (var context = new ATHouse())
+                    using (var context = new ATHouseContext())
                     {
                         var model = new HouseBase();
                         model.type = "Rent";
@@ -702,7 +702,7 @@ namespace AT.Controller
             {
                 try
                 {
-                    using (var context = new ATHouse())
+                    using (var context = new ATHouseContext())
                     {
                         var model = new HouseBase();
                         model.type = "SecondHand";
@@ -939,7 +939,7 @@ namespace AT.Controller
                     model.web = "Fang";
                     model.modelID = title.Attributes["href"].Value;
                     var path = domain + model.modelID;
-                    using (var context = new ATHouse())
+                    using (var context = new ATHouseContext())
                     {
 
                         model.ID = Guid.NewGuid();
@@ -1031,7 +1031,7 @@ namespace AT.Controller
             {
                 try
                 {
-                    var model = new NewHouse();
+                    var model = new NewHouses();
 
 
                     var tnode = HtmlNode.CreateNode(node.OuterHtml);
@@ -1045,11 +1045,11 @@ namespace AT.Controller
                     model.modelID = new Regex("^http://(.*).fang.com/", RegexOptions.Singleline).Match(model.modelUrl).Groups[1].Value;
 
 
-                    using (var context = new ATHouse())
+                    using (var context = new ATHouseContext())
                     {
 
                         model.ID = Guid.NewGuid();
-                        var any = context.NewHouse.Any(p => p.modelID == model.web + "-" + model.modelID);
+                        var any = context.NewHouses.Any(p => p.modelID == model.web + "-" + model.modelID);
                         if (any)
                         {
                             LogHelper.WriteLog("已存在next...");
@@ -1102,7 +1102,7 @@ namespace AT.Controller
 
 
                         model.modelID = model.web + "-" + model.modelID;
-                        context.NewHouse.Add(model);
+                        context.NewHouses.Add(model);
                         context.SaveChanges();
                         LogHelper.WriteLog("插入成功！ next...");
                         LogHelper.WriteLog("结束");
@@ -1151,7 +1151,7 @@ namespace AT.Controller
                     model.modelTitle = title.InnerText;
                     model.web = "Fang";
                     model.modelID = title.Attributes["href"].Value;
-                    using (var context = new ATHouse())
+                    using (var context = new ATHouseContext())
                     {
 
                         model.ID = Guid.NewGuid();

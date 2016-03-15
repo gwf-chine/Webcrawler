@@ -1,0 +1,1 @@
+C:\Working\webcrawler\AT.GrapApplication\Service.Web.Core\obj\Debug\Service.Web.Core.csprojResolveAssemblyReference.cache

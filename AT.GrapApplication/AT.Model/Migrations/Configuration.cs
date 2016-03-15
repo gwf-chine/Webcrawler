@@ -1,18 +1,18 @@
-namespace AT.Model.Migrations
+namespace Service.Model.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AT.Model.ATHouse>
+    internal sealed class Configuration : DbMigrationsConfiguration<Service.Model.ATHouseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(AT.Model.ATHouse context)
+        protected override void Seed(Service.Model.ATHouseContext context)
         {
             //  This method will be called after migrating to the latest version.
 

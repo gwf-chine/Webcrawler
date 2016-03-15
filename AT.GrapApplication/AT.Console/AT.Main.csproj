@@ -99,9 +99,9 @@
       <Project>{8b33db5c-270b-4715-b343-06783b240346}</Project>
       <Name>AT.Controller</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AT.Model\AT.Model.csproj">
+    <ProjectReference Include="..\AT.Model\Antuo.Model.csproj">
       <Project>{531df9d4-58e3-46cf-9073-02e2eb456d37}</Project>
-      <Name>AT.Model</Name>
+      <Name>Antuo.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

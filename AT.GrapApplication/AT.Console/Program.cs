@@ -1,5 +1,5 @@
-﻿using AT.Common;
-using AT.Model;
+﻿using Service.Core;
+using Service.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +13,10 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.IO;
 using System.Threading;
-using AT.Controller;
+using Service.Controller;
 using log4net;
 
-namespace AT.ConsoleControl
+namespace Service.ConsoleControl
 {
     class Program
     {

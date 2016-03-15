@@ -1,4 +1,4 @@
-namespace AT.Model
+namespace Service.Model
 {
     using System;
     using System.Collections.Generic;

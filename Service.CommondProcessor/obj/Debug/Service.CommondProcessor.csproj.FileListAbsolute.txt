@@ -1,0 +1,1 @@
+C:\Working\webcrawler\Service.CommondProcessor\obj\Debug\Service.CommondProcessor.csprojResolveAssemblyReference.cache
