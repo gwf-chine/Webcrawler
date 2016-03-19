@@ -8,7 +8,7 @@ namespace Antuo.Data.Infrastructure
 {
     public class DatabaseFactory : Disposable, IDatabaseFactory
     {
-        private Antuo.Model.ATHouseContext dataContext;
+        private ATHouseContext dataContext;
         public ATHouseContext Get()
         {
             return dataContext ?? (dataContext = new ATHouseContext());

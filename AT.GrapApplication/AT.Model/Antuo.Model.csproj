@@ -57,7 +57,7 @@
     <Compile Include="HuaWei.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ATHouse.cs" />
+    <Compile Include="ATHouseContext.cs" />
     <Compile Include="Hotel\HotelBase.cs" />
     <Compile Include="Hotel\HotelComments.cs" />
     <Compile Include="Hotel\HotelReserves.cs" />

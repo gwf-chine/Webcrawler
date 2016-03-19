@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Antuo.Data.Core.Repositories
 {
-    public class TravelCommentRepository : RepositoryBase<HotelBase>, ITravelBaseRepository
+    public class TravelCommentRepository : RepositoryBase<TravelComments>, ITravelCommentRepository
     {
         public TravelCommentRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)

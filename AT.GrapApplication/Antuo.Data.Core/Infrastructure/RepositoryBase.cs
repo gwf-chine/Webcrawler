@@ -7,14 +7,14 @@ using System.Data;
 using System.Linq.Expressions;
 using Antuo.Data;
 using Antuo.Model;
-
+using System.Data.Entity;
 
 namespace Antuo.Data.Infrastructure
 {
     public abstract class RepositoryBase<T> where T : class
     {
         private ATHouseContext dataContext;
-        private readonly System.Data.Entity.IDbSet<T> dbset;
+        private readonly IDbSet<T> dbset;
         protected RepositoryBase(IDatabaseFactory databaseFactory)
         {
             DatabaseFactory = databaseFactory;
@@ -33,6 +33,7 @@ namespace Antuo.Data.Infrastructure
         public virtual void Add(T entity)
         {
             dbset.Add(entity);
+        
         }
         public virtual void Update(T entity)
         {
@@ -68,6 +69,27 @@ namespace Antuo.Data.Infrastructure
         public T Get(Expression<Func<T, bool>> where)
         {
             return dbset.Where(where).FirstOrDefault<T>();
+        }
+      
+        public virtual IQueryable<T> Filter(Expression<Func<T, bool>> predicate)
+        {
+            return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();
+        }
+        public bool Contains(Expression<Func<T, bool>> predicate)
+        {
+            return dataContext.Set<T>().Any(predicate);
+        }
+
+        public virtual IQueryable<T> Filter(Expression<Func<T, bool>> filter, out int total, int index = 0,
+                                               int size = 50)
+        {
+            var skipCount = index * size;
+            var resetSet = filter != null
+                                ? dataContext.Set<T>().Where<T>(filter).AsQueryable()
+                                : dataContext.Set<T>().AsQueryable();
+            resetSet = skipCount == 0 ? resetSet.Take(size) : resetSet.Skip(skipCount).Take(size);
+            total = resetSet.Count();
+            return resetSet.AsQueryable();
         }
     }
 }

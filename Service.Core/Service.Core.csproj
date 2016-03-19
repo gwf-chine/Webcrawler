@@ -59,8 +59,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
@@ -71,6 +74,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\CacheBase.cs" />
+    <Compile Include="Caching\CacheExtensions.cs" />
+    <Compile Include="Caching\CacheLevel.cs" />
+    <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="Caching\ICache.cs" />
+    <Compile Include="Caching\ICacheProvider.cs" />
+    <Compile Include="Caching\InternalCacher.cs" />
+    <Compile Include="Caching\RuntimeMemoryCache.cs" />
+    <Compile Include="Caching\RuntimeMemoryCacheProvider.cs" />
     <Compile Include="Common\AgilityPackHelper.cs" />
     <Compile Include="Common\ConfigHelper.cs" />
     <Compile Include="Common\DirectHelper.cs" />
@@ -79,13 +91,153 @@
     <Compile Include="Common\HttpHelper.cs" />
     <Compile Include="Common\LogHelper.cs" />
     <Compile Include="Common\Md5Encrypt.cs" />
+    <Compile Include="Common\PinYinConvert.cs" />
     <Compile Include="Common\SerializationHelper.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Common\ValidationResult.cs" />
+    <Compile Include="Configs\BasicLoggingConfig.cs" />
+    <Compile Include="Configs\ConfigFile\Data\ContextCollection.cs" />
+    <Compile Include="Configs\ConfigFile\Data\ContextElement.cs" />
+    <Compile Include="Configs\ConfigFile\Data\CreateDatabaseInitializerElement.cs" />
+    <Compile Include="Configs\ConfigFile\Data\DataElement.cs" />
+    <Compile Include="Configs\ConfigFile\Data\DbContextInitializerElement.cs" />
+    <Compile Include="Configs\ConfigFile\Logging\BasicLoggingElement.cs" />
+    <Compile Include="Configs\ConfigFile\Logging\DataLoggingElement.cs" />
+    <Compile Include="Configs\ConfigFile\Logging\LoggingAdapterCollection.cs" />
+    <Compile Include="Configs\ConfigFile\Logging\LoggingAdapterElement.cs" />
+    <Compile Include="Configs\ConfigFile\Logging\LoggingElement.cs" />
+    <Compile Include="Configs\ConfigFile\Logging\LoggingEntryElement.cs" />
+    <Compile Include="Configs\ConfigFile\OSharpFrameworkSection.cs" />
+    <Compile Include="Configs\DataConfig.cs" />
+    <Compile Include="Configs\DataLoggingConfig.cs" />
+    <Compile Include="Configs\DbContextConfig.cs" />
+    <Compile Include="Configs\DbContextInitializerConfig.cs" />
+    <Compile Include="Configs\IDataConfigReseter.cs" />
+    <Compile Include="Configs\ILoggingConfigReseter.cs" />
+    <Compile Include="Configs\LoggingAdapterConfig.cs" />
+    <Compile Include="Configs\LoggingConfig.cs" />
+    <Compile Include="Configs\LoggingEntryConfig.cs" />
+    <Compile Include="Configs\OSharpConfig.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Context\Operator.cs" />
+    <Compile Include="Data\EntityBase.cs" />
+    <Compile Include="Data\ExpirableBase.cs" />
+    <Compile Include="Data\Extensions\CollectionExtensions.cs" />
+    <Compile Include="Data\Extensions\EntityInterfaceExtensions.cs" />
+    <Compile Include="Data\IEntity.cs" />
+    <Compile Include="Data\IEntityDto.cs" />
+    <Compile Include="Data\Infrastructure\IAudited.cs" />
+    <Compile Include="Data\Infrastructure\ICreatedAudited.cs" />
+    <Compile Include="Data\Infrastructure\ICreatedTime.cs" />
+    <Compile Include="Data\Infrastructure\IExpirable.cs" />
+    <Compile Include="Data\Infrastructure\ILockable.cs" />
+    <Compile Include="Data\Infrastructure\IRecyclable.cs" />
+    <Compile Include="Data\Infrastructure\ITimestamp.cs" />
+    <Compile Include="Data\Infrastructure\IUpdateAutited.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\IUnitOfWork.cs" />
+    <Compile Include="Data\TransactionalBehavior.cs" />
+    <Compile Include="Dependency\ActivatorUtilities.cs" />
+    <Compile Include="Dependency\IDependency.cs" />
+    <Compile Include="Dependency\IIocBuilder.cs" />
+    <Compile Include="Dependency\IIocResolver.cs" />
+    <Compile Include="Dependency\IocBuilderBase.cs" />
+    <Compile Include="Dependency\IoCServiceProvider.cs" />
+    <Compile Include="Dependency\IScopeDependency.cs" />
+    <Compile Include="Dependency\IServiceCollection.cs" />
+    <Compile Include="Dependency\IServicesBuilder.cs" />
+    <Compile Include="Dependency\ISingletonDependency.cs" />
+    <Compile Include="Dependency\ITransientDependency.cs" />
+    <Compile Include="Dependency\LifetimeStyle.cs" />
+    <Compile Include="Dependency\ObjectFactory.cs" />
+    <Compile Include="Dependency\ScopeDependencyTypeFinder.cs" />
+    <Compile Include="Dependency\ServiceBuildOptions.cs" />
+    <Compile Include="Dependency\ServiceCollection.cs" />
+    <Compile Include="Dependency\ServiceCollectionExtensions.cs" />
+    <Compile Include="Dependency\ServiceDescriptor.cs" />
+    <Compile Include="Dependency\ServiceProviderExtensions.cs" />
+    <Compile Include="Dependency\ServicesBuilder.cs" />
+    <Compile Include="Dependency\SingtonDependencyTypeFinder.cs" />
+    <Compile Include="Dependency\TransientDependencyTypeFinder.cs" />
+    <Compile Include="Extensions\ClaimsIdentityExtensions.cs" />
+    <Compile Include="Initialize\DataLoggingInitializer.cs" />
+    <Compile Include="Initialize\FrameworkInitializer.cs" />
+    <Compile Include="Initialize\IBasicLoggingInitializer.cs" />
+    <Compile Include="Initialize\IDatabaseInitializer.cs" />
+    <Compile Include="Initialize\IDataHandlerInitializer.cs" />
+    <Compile Include="Initialize\IDataLoggingInitializer.cs" />
+    <Compile Include="Initialize\IFrameworkInitializer.cs" />
+    <Compile Include="Initialize\LoggingInitializerBase.cs" />
+    <Compile Include="Logging\DatabaseLog.cs" />
+    <Compile Include="Logging\DatabaseLoggerAdapter.cs" />
+    <Compile Include="Logging\DatabaseOperateLogWriter.cs" />
+    <Compile Include="Logging\DataLog.cs" />
+    <Compile Include="Logging\DataLogCache.cs" />
+    <Compile Include="Logging\DataLogItem.cs" />
+    <Compile Include="Logging\IDataLogCache.cs" />
+    <Compile Include="Logging\IOperateLogWriter.cs" />
+    <Compile Include="Logging\LogInfoBase.cs" />
+    <Compile Include="Logging\OperateLog.cs" />
+    <Compile Include="Logging\SystemLog.cs" />
+    <Compile Include="Mapping\IMapper.cs" />
+    <Compile Include="Mapping\IMappersBuilder.cs" />
+    <Compile Include="Mapping\IMapSourceTypeFinder.cs" />
+    <Compile Include="Mapping\IMapTargetTypeFinder.cs" />
+    <Compile Include="Mapping\IMapTuple.cs" />
+    <Compile Include="Mapping\InputDtoTypeFinder.cs" />
+    <Compile Include="Mapping\MapperExtensions.cs" />
+    <Compile Include="Mapping\MappersBuilder.cs" />
+    <Compile Include="Mapping\MapTupleBase.cs" />
+    <Compile Include="Mapping\OutputDtoTypeFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs" />
+    <Compile Include="Reflection\DirectoryAssemblyFinder.cs" />
+    <Compile Include="Reflection\IAllAssemblyFinder.cs" />
+    <Compile Include="Reflection\IAssemblyFinder.cs" />
+    <Compile Include="Reflection\IFinder.cs" />
+    <Compile Include="Reflection\IMethodInfoFinder.cs" />
+    <Compile Include="Reflection\ITypeFinder.cs" />
+    <Compile Include="Security\EntityInfo.cs" />
+    <Compile Include="Security\EntityInfoBase.cs" />
+    <Compile Include="Security\EntityInfoBaseInputDto.cs" />
+    <Compile Include="Security\EntityInfoHandler.cs" />
+    <Compile Include="Security\EntityInfoHandlerBase.cs" />
+    <Compile Include="Security\EntityTypeFinder.cs" />
+    <Compile Include="Security\FilterType.cs" />
+    <Compile Include="Security\Function.cs" />
+    <Compile Include="Security\FunctionBase.cs" />
+    <Compile Include="Security\FunctionBaseInputDto.cs" />
+    <Compile Include="Security\FunctionHandlerBase.cs" />
+    <Compile Include="Security\FunctionType.cs" />
+    <Compile Include="Security\IEntityInfo.cs" />
+    <Compile Include="Security\IEntityInfoHandler.cs" />
+    <Compile Include="Security\IEntityTypeFinder.cs" />
+    <Compile Include="Security\IFunction.cs" />
+    <Compile Include="Security\IFunctionHandler.cs" />
+    <Compile Include="Security\IFunctionMethodFinder.cs" />
+    <Compile Include="Security\IFunctionTypeFinder.cs" />
+    <Compile Include="Security\LoginedAttribute.cs" />
+    <Compile Include="Security\NullFunctionHandler.cs" />
+    <Compile Include="Security\NullFunctionMethodInfoFinder.cs" />
+    <Compile Include="Security\NullFunctionTypeFinder.cs" />
+    <Compile Include="Security\PlatformToken.cs" />
+    <Compile Include="Security\RoleLimitAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Configs\ConfigFile\osharp.config" />
+    <None Include="Configs\ConfigFile\osharp.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Service.Utility\Service.Utility.csproj">
+      <Project>{16edb0c4-ecf9-4824-9997-fc258ced79bd}</Project>
+      <Name>Service.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

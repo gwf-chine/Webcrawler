@@ -9,7 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Threading;
 
-namespace Antuo.Core
+namespace Service.Core.Common
 {
     public class HttpHelper
     {

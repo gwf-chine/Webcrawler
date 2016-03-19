@@ -1,4 +1,4 @@
-﻿using Antuo.Core;
+﻿
 using Antuo.Model;
 using System;
 using System.Collections.Generic;
@@ -15,20 +15,28 @@ using System.IO;
 using System.Threading;
 using Antuo.Controller;
 using log4net;
+using AT.Controller.Travel;
+using Service.Core.Common;
+using Antuo.Data.Core.Repositories;
+using Antuo.Data.Infrastructure;
+using AT.Main;
 
-namespace Antuo.ConsoleControl
+namespace Antuo.Main
 {
     class Program
     {
+       
         static void Main(string[] args)
         {
 
-         
 
 
-            new   QFangHelper().Search();
+            Bootstrapper.Run();
+
+        
             Console.ReadKey();
         }
+       
         #region [华为]
         private static void Huawei()
         {
@@ -48,7 +56,7 @@ namespace Antuo.ConsoleControl
 
             var temp = getConfig();
 
-            doc.LoadHtml(Utils.HttpGet("http://www.vmall.com/product/1396.html"));
+            doc.LoadHtml( Utils.HttpGet("http://www.vmall.com/product/1396.html"));
 
             foreach (var item in temp.GetType().GetProperties())
             {

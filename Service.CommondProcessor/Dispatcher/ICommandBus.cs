@@ -1,5 +1,6 @@
 ﻿using Antuo.CommandProcessor.Command;
-using Antuo.Core.Common;
+
+using Service.Core.Common;
 using System.Collections.Generic;
 namespace Antuo.CommandProcessor.Dispatcher
 {

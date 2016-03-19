@@ -9,3 +9,4 @@ C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\Antuo.Model.dll
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\bin\Debug\Antuo.Model.pdb
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\obj\Debug\Antuo.Model.dll
 C:\Working\webcrawler\AT.GrapApplication\AT.Model\obj\Debug\Antuo.Model.pdb
+C:\Working\webcrawler\AT.GrapApplication\AT.Model\obj\Debug\Antuo.Model.csprojResolveAssemblyReference.cache

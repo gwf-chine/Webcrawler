@@ -12,3 +12,5 @@ C:\Working\webcrawler\AT.GrapApplication\Antuo.Data.Core\bin\Debug\zh-Hans\Entit
 C:\Working\webcrawler\AT.GrapApplication\Antuo.Data.Core\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 C:\Working\webcrawler\AT.GrapApplication\Antuo.Data.Core\obj\Debug\Antuo.Data.Core.dll
 C:\Working\webcrawler\AT.GrapApplication\Antuo.Data.Core\obj\Debug\Antuo.Data.Core.pdb
+C:\Working\webcrawler\AT.GrapApplication\Antuo.Data.Core\bin\Debug\Autofac.dll
+C:\Working\webcrawler\AT.GrapApplication\Antuo.Data.Core\bin\Debug\Autofac.xml

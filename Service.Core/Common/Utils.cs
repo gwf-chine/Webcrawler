@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Antuo.Core
+namespace Service.Core.Common
 {
     public class Utils
     {

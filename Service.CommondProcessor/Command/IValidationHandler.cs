@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Antuo.CommandProcessor;
-using Antuo.Core.Common;
+using Service.Core.Common;
 
 namespace Antuo.CommandProcessor.Command
 {

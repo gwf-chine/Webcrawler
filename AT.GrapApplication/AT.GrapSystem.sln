@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AT.Main", "AT.Console\AT.Main.csproj", "{C76BB3D9-A7C5-44BB-918E-440762123EE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AT.Common", "AT.Common\AT.Common.csproj", "{AEF812C4-3C18-411F-8BC8-31D467478CC5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antuo.Model", "AT.Model\Antuo.Model.csproj", "{531DF9D4-58E3-46CF-9073-02E2EB456D37}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AT.Controller", "AT.Controller\AT.Controller.csproj", "{8B33DB5C-270B-4715-B343-06783B240346}"
@@ -15,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Data.Redis", "..\Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Data.MongoDB", "..\Service.Data.MongoDB\Service.Data.MongoDB.csproj", "{BE95C229-8744-4E2E-BC93-70A08290BBA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antuo.CrawlerInterface", "Antuo.CrawlerInterface\Antuo.CrawlerInterface.csproj", "{B2165DDA-675E-454D-A335-370DC68EEE06}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antuo.Data.Core", "Antuo.Data.Core\Antuo.Data.Core.csproj", "{08B84E2B-043C-43BF-84D5-0AAA7CD805F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.CommondProcessor", "..\Service.CommondProcessor\Service.CommondProcessor.csproj", "{7667C92B-1A8D-4EEF-96E4-092AD7575083}"
@@ -24,6 +20,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Core", "..\Service.Core\Service.Core.csproj", "{76D7E52D-35D7-44C8-832C-5BB56F7B8C57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Web.Core", "..\Service.Web.Core\Service.Web.Core.csproj", "{5093B8AF-9B74-4CA6-A5B6-90FBB96DD726}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Utility", "..\Service.Utility\Service.Utility.csproj", "{16EDB0C4-ECF9-4824-9997-FC258CED79BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Autofac", "..\Service.Autofac\Service.Autofac.csproj", "{10535C8E-4D60-47DB-9E02-AA4FC5B858A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Web.Mvc", "..\Service.Web.Mvc\Service.Web.Mvc.csproj", "{360A5B8F-790A-41CF-B470-2D37D17EE152}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antuo.Web", "Antuo.Web\Antuo.Web.csproj", "{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +39,6 @@ Global
 		{C76BB3D9-A7C5-44BB-918E-440762123EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C76BB3D9-A7C5-44BB-918E-440762123EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C76BB3D9-A7C5-44BB-918E-440762123EE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AEF812C4-3C18-411F-8BC8-31D467478CC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AEF812C4-3C18-411F-8BC8-31D467478CC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AEF812C4-3C18-411F-8BC8-31D467478CC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AEF812C4-3C18-411F-8BC8-31D467478CC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{531DF9D4-58E3-46CF-9073-02E2EB456D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{531DF9D4-58E3-46CF-9073-02E2EB456D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{531DF9D4-58E3-46CF-9073-02E2EB456D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,10 +55,6 @@ Global
 		{BE95C229-8744-4E2E-BC93-70A08290BBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE95C229-8744-4E2E-BC93-70A08290BBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE95C229-8744-4E2E-BC93-70A08290BBA2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2165DDA-675E-454D-A335-370DC68EEE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2165DDA-675E-454D-A335-370DC68EEE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2165DDA-675E-454D-A335-370DC68EEE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2165DDA-675E-454D-A335-370DC68EEE06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08B84E2B-043C-43BF-84D5-0AAA7CD805F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{08B84E2B-043C-43BF-84D5-0AAA7CD805F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08B84E2B-043C-43BF-84D5-0AAA7CD805F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,6 +71,22 @@ Global
 		{5093B8AF-9B74-4CA6-A5B6-90FBB96DD726}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5093B8AF-9B74-4CA6-A5B6-90FBB96DD726}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5093B8AF-9B74-4CA6-A5B6-90FBB96DD726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16EDB0C4-ECF9-4824-9997-FC258CED79BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16EDB0C4-ECF9-4824-9997-FC258CED79BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16EDB0C4-ECF9-4824-9997-FC258CED79BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16EDB0C4-ECF9-4824-9997-FC258CED79BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10535C8E-4D60-47DB-9E02-AA4FC5B858A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10535C8E-4D60-47DB-9E02-AA4FC5B858A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10535C8E-4D60-47DB-9E02-AA4FC5B858A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10535C8E-4D60-47DB-9E02-AA4FC5B858A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360A5B8F-790A-41CF-B470-2D37D17EE152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360A5B8F-790A-41CF-B470-2D37D17EE152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360A5B8F-790A-41CF-B470-2D37D17EE152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360A5B8F-790A-41CF-B470-2D37D17EE152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

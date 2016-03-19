@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Antuo.Core
+namespace Service.Core.Common
 {
     public class DirectHelper
     {

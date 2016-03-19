@@ -1,4 +1,4 @@
-﻿using Antuo.Core;
+﻿
 using Antuo.Model;
 using HtmlAgilityPack;
 using Newtonsoft.Json.Linq;
@@ -13,6 +13,7 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.IO;
 using Antuo.Model.Travels;
+using Service.Core.Common;
 
 namespace Antuo.Controller
 {

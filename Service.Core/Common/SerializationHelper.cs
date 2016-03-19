@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Antuo.Core
+namespace Service.Core.Common
 {
     public class SerializationHelper
     {

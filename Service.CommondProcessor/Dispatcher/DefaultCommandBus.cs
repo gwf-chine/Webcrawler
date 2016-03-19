@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Antuo.CommandProcessor.Command;
-using Antuo.Core.Common;
+
+using Service.Core.Common;
+
 namespace Antuo.CommandProcessor.Dispatcher
 {
     public class DefaultCommandBus : ICommandBus
