@@ -83,7 +83,7 @@
     <Compile Include="Caching\InternalCacher.cs" />
     <Compile Include="Caching\RuntimeMemoryCache.cs" />
     <Compile Include="Caching\RuntimeMemoryCacheProvider.cs" />
-    <Compile Include="Common\AgilityPackHelper.cs" />
+    <Compile Include="Common\AgPackHelper.cs" />
     <Compile Include="Common\ConfigHelper.cs" />
     <Compile Include="Common\DirectHelper.cs" />
     <Compile Include="Common\ExcelUtility.cs" />

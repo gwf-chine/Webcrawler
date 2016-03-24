@@ -15,6 +15,19 @@ namespace Service.Core.Common
 {
     public class Utils
     {
+        #region
+        /// <summary>
+        /// 下载图片
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="fileName"></param>
+        public static void DownImg(string url,string fileName)
+        {
+            WebClient client = new WebClient();
+            client.DownloadFile(url,fileName);
+        }
+        #endregion
+
         #region 发送电子邮件
         /// <summary>
         /// 发送电子邮件

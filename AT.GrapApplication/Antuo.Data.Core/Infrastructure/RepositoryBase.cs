@@ -70,7 +70,11 @@ namespace Antuo.Data.Infrastructure
         {
             return dbset.Where(where).FirstOrDefault<T>();
         }
-      
+        public bool Exits(Expression<Func<T, bool>> where)
+        {
+            return dbset.Any(where);
+        }
+
         public virtual IQueryable<T> Filter(Expression<Func<T, bool>> predicate)
         {
             return dataContext.Set<T>().Where<T>(predicate).AsQueryable<T>();

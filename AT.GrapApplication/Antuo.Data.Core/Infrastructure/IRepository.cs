@@ -15,6 +15,7 @@ namespace Antuo.Data.Infrastructure
         T GetById(long Id);
         T GetById(string Id);
         T Get(Expression<Func<T, bool>> where);
+        bool Exits(Expression<Func<T, bool>> where);
         IEnumerable<T> GetAll();
         IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
     }

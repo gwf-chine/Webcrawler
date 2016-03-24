@@ -66,6 +66,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\ExpenseCategory.cs" />
+    <Compile Include="Repositories\HotelCommentRepository.cs" />
+    <Compile Include="Repositories\HotelBaseRepository.cs" />
     <Compile Include="Repositories\TravelBaseRepository.cs" />
     <Compile Include="Repositories\TravelCommentRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

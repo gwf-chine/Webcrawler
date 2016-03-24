@@ -33,7 +33,7 @@ namespace Antuo.Model.Travels
         /// <summary>
         /// 评价量
         /// </summary>
-        public string CommentCount { get; set; }
+        public int CommentCount { get; set; }
         /// <summary>
         /// 好评率
         /// </summary>

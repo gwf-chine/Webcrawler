@@ -23,12 +23,12 @@ namespace Service.Core.Common
 
         public static readonly log4net.ILog logerror = log4net.LogManager.GetLogger("logerror");
 
-        public static void SetConfig()
+        public  void SetConfig()
         {
             XmlConfigurator.ConfigureAndWatch(new System.IO.FileInfo( "log4net.config"));
         }
 
-        public static void SetConfig(FileInfo configFile)
+        public  void SetConfig(FileInfo configFile)
         {
             XmlConfigurator.Configure(configFile);
         }

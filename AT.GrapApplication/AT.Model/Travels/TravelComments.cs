@@ -9,7 +9,7 @@ namespace Antuo.Model.Travels
     public partial class TravelComments
     {
         public Guid ID { get; set; }
-
+        public string ProductCode { get; set; }
         public string ProductTitle { get; set; }
 
         public string UserID { get; set; }

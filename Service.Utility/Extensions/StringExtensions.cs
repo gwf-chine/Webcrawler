@@ -120,12 +120,19 @@ namespace Service.Utility.Extensions
             return IsMatch(value, @"\d");
         }
 
-
+       
         public static int ToInt(this string value)
         {
             if (!value.IsMatchNumber())
                 return 0;
             return int.Parse(value);
+        }
+        public static int RegInt(this string value)
+        {
+            if(new Regex(@"(\d+)").IsMatch(value))
+                 return new Regex(@"(\d+)").Match(value).Groups[0].Value.ToInt();
+          
+            return 0;
         }
         /// <summary>
         /// 检测指定字符串是否全部为数字并且长度等于指定长度
