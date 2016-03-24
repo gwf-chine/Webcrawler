@@ -59,7 +59,7 @@ namespace Antuo.Controller
             var pageSize = 0;
             var pageIndex = 1;
             var list = new HtmlNodeCollection(null);
-            LogHelper.SetConfig();
+         
 
             #region [ 租房数据 ]
             LogHelper.WriteLog("<<开始抓取租房房数据>>");
@@ -536,7 +536,7 @@ namespace Antuo.Controller
             var pageSize = 0;
             var pageIndex = 1;
             var list = new HtmlNodeCollection(null);
-            LogHelper.SetConfig();
+    
 
             #region [ 租房房数据 ]
 
@@ -906,7 +906,7 @@ namespace Antuo.Controller
             var pageSize = 0;
             var pageIndex = 1;
             var list = new HtmlNodeCollection(null);
-            LogHelper.SetConfig();
+       
 
             #region [ 租房数据 ]
             LogHelper.WriteLog("<<开始抓取租房房数据>>");

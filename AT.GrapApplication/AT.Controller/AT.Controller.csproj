@@ -62,10 +62,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Travel\TravelBase.cs" />
+    <Compile Include="Hotel\MeituanController.cs" />
+    <Compile Include="Travel\QunarController.cs" />
+    <Compile Include="BaseController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QFangHelper.cs" />
-    <Compile Include="Travel\XieCheng.cs" />
+    <Compile Include="Travel\TuniuController.cs" />
+    <Compile Include="Travel\XieChengController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Service.Core\Service.Core.csproj">
