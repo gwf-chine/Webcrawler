@@ -12,8 +12,8 @@ namespace Antuo.Data.Infrastructure
         void Update(T entity);
         void Delete(T entity);
         void Delete(Expression<Func<T, bool>> where);
-        T GetById(long Id);
-        T GetById(string Id);
+        T GetById(object Id);
+   
         T Get(Expression<Func<T, bool>> where);
         bool Exits(Expression<Func<T, bool>> where);
         IEnumerable<T> GetAll();

@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Web.Mvc", "..\Servi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antuo.Web", "Antuo.Web\Antuo.Web.csproj", "{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Data.Entity", "Service.Data.Entity\Service.Data.Entity.csproj", "{7CC8197C-899A-47A8-9A9F-A943F4B75E98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{391C5B1F-08D7-44E5-A9E9-36E52324FFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CC8197C-899A-47A8-9A9F-A943F4B75E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CC8197C-899A-47A8-9A9F-A943F4B75E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CC8197C-899A-47A8-9A9F-A943F4B75E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CC8197C-899A-47A8-9A9F-A943F4B75E98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -49,169 +49,165 @@ namespace AT.Controller.Travel
         {
             var pageIndex = 1;
             domain = "http://s.tuniu.com";
-
-
-
-            var pageCount = 0;
-            do
+            Task.Run(() =>
             {
 
-                #region 携程根据关键词检索旅游信息（pageIndex）页面数据
 
-                htmlItem.URL = "http://s.tuniu.com/search_complex/whole-shz-0-" + toCity + "/" + pageIndex + "/";
-                //加载列表页面
-                htmlDoc = htmlItem.GetDoc();
-                
-                pageCount = htmlDoc.SelectNodes("//div[@class='page-bottom']/a").ToList().LastOrDefault().PreviousSibling.InnerText.ToInt();
 
-                var items = htmlDoc.SelectNodes("//*[@id='niuren_list']/div[2]/div[1]/div[6]/ul/li");
-                foreach (var item in items)
+                var pageCount = 0;
+                do
                 {
-                    var link = item.SelectSingleNode(".//div[1]/dl/dt/p[1]/a");
-                    if (link == null)
-                        continue;
-                    htmlItem.URL = link.Attributes["href"].Value;
 
+                    #region 携程根据关键词检索旅游信息（pageIndex）页面数据
+
+                    htmlItem.URL = "http://s.tuniu.com/search_complex/whole-shz-0-" + toCity + "/" + pageIndex + "/";
+                    //加载列表页面
                     htmlDoc = htmlItem.GetDoc();
 
-                    #region 解析旅游信息
-                    var model = new TravelBases();
+                    pageCount = htmlDoc.SelectNodes("//div[@class='page-bottom']/a").ToList().LastOrDefault().PreviousSibling.InnerText.ToInt();
 
-                    //获取携程数据标识
-                    model.TravelID = htmlDoc.SignleNodeValue("//*[@id=\"route_id_tmp\"]");
-                    model.Web = "TuNiu";
-                    if (travelBase.Exits(p => p.TravelID == model.TravelID && p.Web == model.Web))
-                        continue;
-                    model.Title = htmlDoc.NodeText("//*[@id=\"wrapMain\"]/div[2]/div[1]/div[1]/h1");
-                    model.ProductCode = model.TravelID;
-                    model.StartCity = htmlDoc.NodeText("//*[@id=\"order_mess\"]/dl[2]/dd/div/div/p");
-                    model.Notice = htmlDoc.NodeHtml("//*[@id=\"ydxz\"]/div[3]");
-                    model.Scheduling = htmlDoc.NodeHtml("//*[@id=\"tripcontent0\"]/div[1]");
-                    model.WebPrice = htmlDoc.NodeText("//*[@id=\"wrapMain\"]/div[2]/div[1]/div[3]/div[2]/div[1]/dl[1]/dd/span[1]/em");
-                    model.Url = htmlItem.URL;
-                    model.Mobile = htmlDoc.NodeText("//*[@id=\"wrapMain\"]/div[2]/div[1]/div[3]/div[2]/div[3]/div/em");
-                    model.SpecialInfo = htmlDoc.NodeHtml("//*[@id=\"abhor_hover\"]/div/p");
-                    //產品特色
-                    model.ProductSpecial = htmlDoc.NodeHtml("//*[@id=\"cpts\"]/div/div/div/div/div[2]");
-                    model.CommentCount = htmlDoc.NodeText("//*[@id=\"pkg-detail-tab-bd\"]/li[6]/a").RegInt();
-                    model.ID = Guid.NewGuid();
-                      #endregion
-
-                    //获取当前目的地所在携程数据ID
-                    var citycode = htmlDoc.SignleNodeValue("//*[@id=\"order_mess\"]/dl[2]/dd/div/div/p", "citycode");
-                    var commentPageIndex = 1;
-                    var commentPageSize = 1000;
-                    var i = 1;
-                    var totalCount = 0;
-                    var verificationIndex = 0; //网站验证重复次数
-                    htmlItem.URL = "http://shz.tuniu.com/yii.php?currentPage=" + commentPageIndex + "&productIds%5B%5D=" + model.TravelID + "&pageLimit=" + commentPageSize + "&r=recall%2FremarkAjax";
-                    var jsonData = JsonObject.Parse(htmlItem.GetAjax("访问速度过快"));
-
-                    totalCount = jsonData.Get("totalItems").ToInt();
-
-                        //当前数据库存储的数量
-                        var dataCount = travelComment.GetMany(p => p.ProductCode == model.ProductCode).Count();
-                        //判断是否数据变动
-                       
-                        if (dataCount > 0 && dataCount < totalCount)
-                        {
-                            commentPageIndex = dataCount / (commentPageSize/10)+1;
-                        
-                        }
-                    
-                        
-                    do
+                    var items = htmlDoc.SelectNodes("//*[@id='niuren_list']/div[2]/div[1]/div[6]/ul/li");
+                    foreach (var item in items)
                     {
-                        #region 解析评论信息
+                        var link = item.SelectSingleNode(".//div[1]/dl/dt/p[1]/a");
+                        if (link == null)
+                            continue;
+                        htmlItem.URL = link.Attributes["href"].Value;
 
-                        //获取评论json字符串
-                        htmlItem.URL = "http://shz.tuniu.com/yii.php?currentPage=" + commentPageIndex + "&productIds%5B%5D=" + model.TravelID + "&pageLimit=" + commentPageSize + "&r=recall%2FremarkAjax";
-                        jsonData = JsonObject.Parse(htmlItem.GetAjax("访问速度过快"));
+                        htmlDoc = htmlItem.GetDoc();
 
-                        totalCount = jsonData.Get("totalItems").ToInt();
-                        #region 途牛网站验证设置
-                        /*
-                        *暂停5秒,继续发送
-                        */
+                        #region 解析旅游信息
+                        var model = new TravelBases();
 
-                        if (totalCount <= 0)
-                        {
-                            do
-                            {
-                                Thread.Sleep(5000);
-                                jsonData = JsonObject.Parse(htmlItem.GetAjax("访问速度过快"));
-
-                                totalCount = jsonData.Get("totalItems").ToInt();
-                                verificationIndex++;
-                                if (verificationIndex > 5)
-                                    break;
-                            } while (totalCount <= 0);
-                          
-                           break;
-                        }
-                      
+                        //获取携程数据标识
+                        model.TravelID = htmlDoc.SignleNodeValue("//*[@id=\"route_id_tmp\"]");
+                        model.Web = "TuNiu";
+                        if (travelBase.Exits(p => p.TravelID == model.TravelID && p.Web == model.Web))
+                            continue;
+                        model.Title = htmlDoc.NodeText("//*[@id=\"wrapMain\"]/div[2]/div[1]/div[1]/h1");
+                        model.ProductCode = model.TravelID;
+                        model.StartCity = htmlDoc.NodeText("//*[@id=\"order_mess\"]/dl[2]/dd/div/div/p");
+                        model.Notice = htmlDoc.NodeHtml("//*[@id=\"ydxz\"]/div[3]");
+                        model.Scheduling = htmlDoc.NodeHtml("//*[@id=\"tripcontent0\"]/div[1]");
+                        model.WebPrice = htmlDoc.NodeText("//*[@id=\"wrapMain\"]/div[2]/div[1]/div[3]/div[2]/div[1]/dl[1]/dd/span[1]/em");
+                        model.Url = htmlItem.URL;
+                        model.Mobile = htmlDoc.NodeText("//*[@id=\"wrapMain\"]/div[2]/div[1]/div[3]/div[2]/div[3]/div/em");
+                        model.SpecialInfo = htmlDoc.NodeHtml("//*[@id=\"abhor_hover\"]/div/p");
+                        //產品特色
+                        model.ProductSpecial = htmlDoc.NodeHtml("//*[@id=\"cpts\"]/div/div/div/div/div[2]");
+                        model.ID = Guid.NewGuid();
                         #endregion
-                        //获取评论数据 
-                        var list = jsonData.ArrayObjects("contents");
-                        if (list == null)
-                            break;
-                       
-
-                        foreach (var json in list)
-                        {
-
-                            //解析携程评论数据
-
-                            var comment = new TravelComments();
-                            comment.ProductCode = model.ProductCode;
-                            comment.RateId = json.Get("id") + model.Web;
-                            i++;
-                            if (travelComment.Exits(p => p.RateId == comment.RateId&&p.ProductCode==model.ProductCode))
-                            {
-                                LogHelper.WriteLog("当前评论已存在，next");
-                                continue;
-                            }
-                               
-                            comment.TravelID = model.ID;
-                            comment.UserID = json.Object("user").Get("cust_indentity");
-                            comment.userName = json.Object("user").Get("nickname");
-                            comment.UserGrade = json.Object("user").Get("level");
-                            comment.UserClient = json.Get("remarkChannelName");
-                            comment.CommentTime = json.Get("startTime");
-                            comment.TravelType = json.Get("productCategoryName");
-                            comment.Comment = json.Object("compTextContent").Get("dataSvalue");
-                            comment.OverComment = json.Get("subTextContents");
-                            comment.CommentTitle = json.Get("CommentTitle");
-                            comment.ReplyContent = json.Get("LastReplyContent");
-                            comment.ReplyTime = json.Get("LastReplyDate");
-                            comment.ID = Guid.NewGuid();
-                            travelComment.Add(comment);
-                         
-                            LogHelper.WriteLog("旅游评论" + i);
-                        }
+                        model.CreateTime = DateTime.Now;
+                        travelBase.Add(model);
                         unitOfWork.Commit();
-                        commentPageIndex++;
-                        LogHelper.WriteLog("旅游评论,第" + commentPageIndex+"页数据");
-                        Thread.Sleep(1000);
-
-                        #endregion
-
-                    } while (i <= totalCount);
 
 
-                    model.CommentCount = totalCount;
-                    model.CreateTime = DateTime.Now;
-                    travelBase.Add(model);
-                    unitOfWork.Commit();
-                 
-                   
+                    }
+                    pageIndex++;
+                    #endregion
+
+                } while (pageIndex <= pageCount);
+            });
+
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    var list = travelBase.GetMany(p => p.CommentCount == 0).ToList();
+                    list.ForEach(item =>
+                    {
+                        SearchComment(item);
+                    });
+                    Thread.Sleep(1000);
                 }
-                pageIndex++;
+            });
+           
+
+        }
+
+        private void SearchComment(TravelBases model)
+        {
+            //获取当前目的地所在携程数据ID
+            var citycode = htmlDoc.SignleNodeValue("//*[@id=\"order_mess\"]/dl[2]/dd/div/div/p", "citycode");
+            var commentPageIndex = 1;
+            var commentPageSize = 1000;
+            var i = 1;
+            var totalCount = 0;
+
+            htmlItem.URL = "http://shz.tuniu.com/yii.php?currentPage=" + commentPageIndex + "&productIds%5B%5D=" + model.TravelID + "&pageLimit=" + commentPageSize + "&r=recall%2FremarkAjax";
+            var jsonData = JsonObject.Parse(htmlItem.GetAjax("访问速度过快"));
+
+            totalCount = jsonData.Get("totalItems").ToInt();
+
+            //当前数据库存储的数量
+            var dataCount = travelComment.GetMany(p => p.ProductCode == model.ProductCode).Count();
+            //判断是否数据变动
+
+
+
+
+            do
+            {
+                if (dataCount >= totalCount)
+                    return;
+
+                #region 解析评论信息
+
+                //获取评论json字符串
+                htmlItem.URL = "http://shz.tuniu.com/yii.php?currentPage=" + commentPageIndex + "&productIds%5B%5D=" + model.TravelID + "&pageLimit=" + commentPageSize + "&r=recall%2FremarkAjax";
+                jsonData = JsonObject.Parse(htmlItem.GetAjax("访问速度过快"));
+
+        
+
+                //获取评论数据 
+                var list = jsonData.ArrayObjects("contents");
+                if (list == null)
+                    return;
+
+
+                foreach (var json in list)
+                {
+
+                    //解析携程评论数据
+
+                    var comment = new TravelComments();
+                    comment.ProductCode = model.ProductCode;
+                    comment.RateId = json.Get("id") + model.Web;
+                    i++;
+                    if (travelComment.Exits(p => p.RateId == comment.RateId && p.ProductCode == model.ProductCode))
+                    {
+                        LogHelper.WriteLog("当前评论已存在，next");
+                        continue;
+                    }
+
+                    comment.TravelID = model.ID;
+                    comment.UserID = json.Object("user").Get("cust_indentity");
+                    comment.userName = json.Object("user").Get("nickname");
+                    comment.UserGrade = json.Object("user").Get("level");
+                    comment.UserClient = json.Get("remarkChannelName");
+                    comment.CommentTime = json.Get("startTime");
+                    comment.TravelType = json.Get("productCategoryName");
+                    comment.Comment = json.Object("compTextContent").Get("dataSvalue");
+                    comment.OverComment = json.Get("subTextContents");
+                    comment.CommentTitle = json.Get("CommentTitle");
+                    comment.ReplyContent = json.Get("LastReplyContent");
+                    comment.ReplyTime = json.Get("LastReplyDate");
+                    comment.ID = Guid.NewGuid();
+                    travelComment.Add(comment);
+
+                    LogHelper.WriteLog("旅游评论" + i);
+                }
+          
+                commentPageIndex++;
+                LogHelper.WriteLog("旅游评论,第" + commentPageIndex + "页数据");
+                Thread.Sleep(1000);
+
                 #endregion
 
-            } while (pageIndex <= pageCount);
-
-
+            } while (i <= totalCount);
+            var newmodel = travelBase.GetById(model.ID);
+            model.CommentCount = totalCount;
+            unitOfWork.Commit();
 
         }
 

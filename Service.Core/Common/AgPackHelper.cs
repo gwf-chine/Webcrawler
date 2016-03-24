@@ -25,7 +25,7 @@ namespace Service.Core.Common
                 i++;
                 if (i >= 5)
                     break;
-            } while (dom.Html.Contains("无法连接到远程服务器"));
+            } while (dom.Html.Contains("无法连接到远程服务器") || dom.Html.Contains("未能解析"));
             cookie = dom.Cookie;
             cookieCollection.Add( dom.CookieCollection ?? new CookieCollection());
             var doc = new HtmlDocument();
@@ -44,7 +44,7 @@ namespace Service.Core.Common
                 i++;
                 if (i >= 5)
                     break;
-            }    while (dom.Html.Contains("无法连接到远程服务器")) ;
+            }    while (dom.Html.Contains("无法连接到远程服务器") || dom.Html.Contains("未能解析")) ;
             var doc = new HtmlDocument();
             doc.LoadHtml(dom.Html);
             var node= doc.DocumentNode.SelectSingleNode(xpath);

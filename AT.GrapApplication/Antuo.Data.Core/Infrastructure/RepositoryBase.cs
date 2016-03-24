@@ -50,14 +50,11 @@ namespace Antuo.Data.Infrastructure
             foreach (T obj in objects)
                 dbset.Remove(obj);
         }
-        public virtual T GetById(long id)
+        public virtual T GetById(object id)
         {
             return dbset.Find(id);
         }
-        public virtual T GetById(string id)
-        {
-            return dbset.Find(id);
-        }
+      
         public virtual IEnumerable<T> GetAll()
         {
             return dbset.ToList();
