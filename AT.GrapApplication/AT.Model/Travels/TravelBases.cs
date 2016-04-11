@@ -6,20 +6,32 @@ namespace Antuo.Model.Travels
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class TravelBases
+    public class TravelBases
     {
         public Guid ID { get; set; }
-
+        /// <summary>
+        /// 旅游标题
+        /// </summary>
         public string Title { get; set; }
-
+        /// <summary>
+        /// 旅游类型
+        /// </summary>
         public string TravelType { get; set; }
-
+        /// <summary>
+        /// 出发城市
+        /// </summary>
         public string StartCity { get; set; }
-
+        /// <summary>
+        /// 产品编码
+        /// </summary>
         public string ProductCode { get; set; }
-
+        /// <summary>
+        /// 价格
+        /// </summary>
         public string WebPrice { get; set; }
-
+        /// <summary>
+        /// 优惠信息
+        /// </summary>
         public string FavMessage { get; set; }
 
         /// <summary>
@@ -92,16 +104,28 @@ namespace Antuo.Model.Travels
         /// </summary>
         public string DedicatedService { get; set; }
         /// <summary>
-        /// 
+        /// 领队服务
         /// </summary>
         public string LeadService { get; set; }
-
+        /// <summary>
+        /// 地址
+        /// </summary>
         public string Url { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
 
         public DateTime CreateTime { get; set; }
+        /// <summary>
+        /// 网站名称
+        /// </summary>
 
         public string Web { get; set; }
+        /// <summary>
+        /// 对应网站标识
+        /// </summary>
 
         public string TravelID { get; set; }
     }
+
 }
