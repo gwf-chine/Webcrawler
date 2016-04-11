@@ -25,8 +25,7 @@ namespace Antuo.Main
 {
     class Program
     {
-
-        void Test() => Console.WriteLine("test");
+        
         static void Main(string[] args)
         {
 
